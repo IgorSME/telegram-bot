@@ -84,7 +84,7 @@ def send_text(message):
     elif message.text == 'Повернутись до головного меню':
         # Здесь выполняется переход на /agent
         # Например, можно отправить пользователю ссылку на /agent
-        agent_url = "https://t.me/ISToDoBot?start=agent"  # Замените на ваш URL
+        agent_url = "https://t.me/Elancom_bot?start=agent"  # Замените на ваш URL
         bot.send_message(
             message.chat.id,
             f"Ви переходите до панелі агента. [/agent]({agent_url})",
