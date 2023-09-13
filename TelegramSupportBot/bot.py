@@ -8,6 +8,7 @@ import datetime
 import markup
 import sys
 from telebot import apihelper
+from telegram import ReplyKeyboardRemove
 
 
 if config.PROXY_URL:
@@ -35,7 +36,7 @@ def start(message):
         markup_main = markup.markup_main(user_id)
         bot.send_message(message.chat.id,
                          '👋🏻 Привіт! Це бот для технічної підтримки абонентів.\nЯкщо у Вас є якісь питання - натисніть на кнопку <b>Надіслати запит</b> і ми якнайшвидше Вам відповімо!',
-                         parse_mode='html', reply_markup=markup_main)
+                         parse_mode='html',  reply_markup=ReplyKeyboardRemove())
 
 
 @bot.message_handler(commands=['agent'])
