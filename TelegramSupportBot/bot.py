@@ -8,13 +8,24 @@ import datetime
 import markup
 import sys
 from telebot import apihelper
-from telegram import ReplyKeyboardRemove
+from telebot.types import ReplyKeyboardRemove
 
 
 if config.PROXY_URL:
     apihelper.proxy = {'https': config.PROXY_URL}
 
 bot = telebot.TeleBot(config.TOKEN, skip_pending=True)
+
+
+@bot.message_handler(func=lambda message: message.text == "Відміна")
+def cancel_action(message):
+    user_id = message.from_user.id
+    # Здесь выполните логику отмены операции
+    # Например, сбросьте текущий шаг пользователя
+    core.cancel_user_operation(user_id)
+
+    # Отправьте сообщение пользователю о том, что операция была отменена
+    bot.send_message(message.chat.id, "Операцію скасовано.", reply_markup=types.ReplyKeyboardRemove())
 
 @bot.message_handler(commands=['start'])
 def start(message):
