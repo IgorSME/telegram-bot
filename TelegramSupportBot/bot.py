@@ -67,7 +67,7 @@ def send_text(message):
     user_id = message.from_user.id
 
     if message.text == '✏️ Надіслати запит':
-        take_new_request = bot.send_message(message.chat.id, 'Введіть свій запит і ми якнайшвидше з Вами відповімо.', reply_markup=markup.markup_cancel())
+        take_new_request = bot.send_message(message.chat.id, 'Введіть свій запит і ми якнайшвидше Вам відповімо.', reply_markup=markup.markup_cancel())
 
         bot.clear_step_handler_by_chat_id(message.chat.id)
         bot.register_next_step_handler(take_new_request, get_new_request)
