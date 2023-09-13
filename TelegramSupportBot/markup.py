@@ -73,7 +73,7 @@ def markup_agent():
 
 def markup_cancel():
     markup_cancel = types.ReplyKeyboardMarkup(resize_keyboard=True)
-    item1 = types.KeyboardButton("Відміна")
+    item1 = types.KeyboardButton("Скасувати")
     markup_cancel.row(item1)
 
     return markup_cancel
