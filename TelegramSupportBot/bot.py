@@ -16,17 +16,6 @@ if config.PROXY_URL:
 
 bot = telebot.TeleBot(config.TOKEN, skip_pending=True)
 
-
-@bot.message_handler(func=lambda message: message.text == "Відміна")
-def cancel_action(message):
-    user_id = message.from_user.id
-    # Здесь выполните логику отмены операции
-    # Например, сбросьте текущий шаг пользователя
-    core.cancel_user_operation(user_id)
-
-    # Отправьте сообщение пользователю о том, что операция была отменена
-    bot.send_message(message.chat.id, "Операцію скасовано.", reply_markup=types.ReplyKeyboardRemove())
-
 @bot.message_handler(commands=['start'])
 def start(message):
     if '/start agent' in message.text:
@@ -47,7 +36,7 @@ def start(message):
         markup_main = markup.markup_main(user_id)
         bot.send_message(message.chat.id,
                          '👋🏻 Привіт! Це бот для технічної підтримки абонентів.\nЯкщо у Вас є якісь питання - натисніть на кнопку <b>Надіслати запит</b> і ми якнайшвидше Вам відповімо!',
-                         parse_mode='html',  reply_markup=ReplyKeyboardRemove())
+                         parse_mode='html', reply_markup=markup_main)
 
 
 @bot.message_handler(commands=['agent'])
