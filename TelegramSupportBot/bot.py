@@ -94,7 +94,7 @@ def send_text(message):
         )
 
     else:
-        bot.send_message(message.chat.id, 'Ви повернулись до головного меню.', parse_mode='html', reply_markup=markup.markup_main(user_id))
+        bot.send_message(message.chat.id, 'Для продовження потрібно натиснути одну з запропонованих кнопок', parse_mode='html', reply_markup=markup.markup_main(user_id))
 
 
 def get_password_message(message):
