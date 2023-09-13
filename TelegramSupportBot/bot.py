@@ -8,7 +8,7 @@ import datetime
 import markup
 import sys
 from telebot import apihelper
-from telebot.types import ReplyKeyboardRemove
+
 
 
 if config.PROXY_URL:
@@ -31,6 +31,12 @@ def start(message):
             bot.clear_step_handler_by_chat_id(message.chat.id)
             bot.register_next_step_handler(take_password_message, get_password_message)
     else:
+        bot.send_message(
+            message.chat.id,
+            '',
+            parse_mode='html',
+            disable_notification=True,
+        )
         # Здесь обрабатывайте логику для остальных случаев
         user_id = message.chat.id
         markup_main = markup.markup_main(user_id)
