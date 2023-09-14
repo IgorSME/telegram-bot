@@ -8,7 +8,9 @@ import datetime
 import markup
 import sys
 from telebot import apihelper
-
+import os
+# Получаем ссылку на оплату из переменной окружения
+payment_link = os.getenv("PAYMENT_LINK")
 
 
 if config.PROXY_URL:
@@ -92,6 +94,11 @@ def send_text(message):
             f"Ви переходите до панелі агента. [/agent]({agent_url})",
             parse_mode='Markdown'
         )
+
+    elif message.text == '💳 Оплата':
+        # Здесь реализуйте логику для оплаты счета, например, отправьте ссылку на оплату.
+        bot.send_message(message.chat.id, f"Для поповнення рахунка перейдіть за [ссылке на оплату]({payment_link}).",
+                         parse_mode='Markdown')
 
     else:
         bot.send_message(message.chat.id, 'Для продовження потрібно натиснути одну з запропонованих кнопок', parse_mode='html', reply_markup=markup.markup_main(user_id))

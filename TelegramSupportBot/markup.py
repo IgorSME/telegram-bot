@@ -56,6 +56,8 @@ def markup_main(user_id):
     else:
         item2 = types.KeyboardButton("✉️ Мої запити")
         markup_main.row(item2)
+        item3 = types.KeyboardButton("💳 Оплата")
+        markup_main.row(item3)
 
     return markup_main
 
